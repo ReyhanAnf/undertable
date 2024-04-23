@@ -22,7 +22,7 @@ export function SheetMenu() {
           {userA ? (
             <MyAvatar key={userA} className="scale-75" />
           ) : (
-            <Image src="/profile_anon.gif" alt="Sign In" className="scale-[55%] rounded-md" />
+            <Image src="/profile_anon.gif" width={20} height={20} alt="Sign In" className=" rounded-md" />
           )}
         </Button>
       </SheetTrigger>

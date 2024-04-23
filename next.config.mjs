@@ -16,7 +16,6 @@ const nextConfig = {
       },
     ],
   },
-  basePath: '/undertable',
 };
 
 export default nextConfig;
