@@ -21,6 +21,8 @@ export const metadata: Metadata = {
   description: "Share your homework",
 };
 
+export const dynamic = 'force-static'
+
 export default function RootLayout({
   children,
 }: Readonly<{

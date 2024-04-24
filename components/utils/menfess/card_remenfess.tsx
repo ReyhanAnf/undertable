@@ -1,15 +1,12 @@
 
 import { ReactNode, use } from "react";
 import { get_replymenfess } from "@/lib/GET/get_menfess";
-import { cookies } from "next/headers";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { AlertDeleteMenfessReply } from "./alert_deletemenfessreply";
 import Image from "next/image";
 
-export default function ReMenfess({ menfessId }: any) {
+export default function ReMenfess({ menfessId, userA }: any) {
   let remenfess = use(get_replymenfess(menfessId));
-  const cookie = cookies();
-  const userA = cookie.get("userToken")?.value;
 
 
   return (

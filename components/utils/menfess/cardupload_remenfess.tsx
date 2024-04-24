@@ -19,7 +19,7 @@ import { ButtonLoading } from "@/components/ui/loading-button"
 
 import { Card, CardTitle } from "@/components/ui/card"
 import { useRouter } from "next/navigation"
-import upload_remenfess from "@/lib/POST/Menfess/upload_remenfess" 
+import upload_remenfess from "@/lib/POST/Menfess/upload_remenfess"
 
 
 

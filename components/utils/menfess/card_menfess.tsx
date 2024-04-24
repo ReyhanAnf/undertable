@@ -37,7 +37,7 @@ export default function CardMenfess() {
               <small className="text-xs leading-none text-slate-500 font-thin">to</small>
               <div className="w-full flex flex-row gap-1 p-2 ml-1 items-center rounded-xl bg-slate-600 bg-opacity-5 m-1 text-sm">
                 <div className="flex flex-col px-2 items-center">
-                  <Image src="/receipent.svg" width={25} alt={"receipent"} />
+                  <Image src="/receipent.svg" width={25} height={25} alt={"receipent"} />
                 </div>
                 {datam.receiver ? (
                   <div className="flex flex-col px-2 items-start">
@@ -64,10 +64,10 @@ export default function CardMenfess() {
           </CardContent>
           <div className="flex flex-row justify-between px-3 my-1">
             <div className="text-slate-500 p-3 gap-1 text-xs flex flex-row items-center bg-cyan-700 bg-opacity-5 rounded-md">
-              <Image src="/sender.svg" width={20} alt={"sender"} /> <span className="font-semibold">{datam.sender}</span>
+              <Image src="/sender.svg" width={20} height={20} alt={"sender"} /> <span className="font-semibold">{datam.sender}</span>
             </div>
             <div className="text-slate-500 p-3 gap-1 text-xs flex flex-row items-center bg-cyan-700 bg-opacity-5 rounded-md">
-              <Image src="/song.svg" width={20} alt={"song"} /> <span className="font-semibold">{datam.song}</span>
+              <Image src="/song.svg" width={20} height={20} alt={"song"} /> <span className="font-semibold">{datam.song}</span>
             </div>
           </div>
 
