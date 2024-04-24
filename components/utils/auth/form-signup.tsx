@@ -16,6 +16,7 @@ import { useFormState } from 'react-dom';
 import auth_signup from "@/lib/POST/Auth/auth_signup"
 import { toast } from "@/components/ui/use-toast"
 import { ButtonLoading } from "@/components/ui/loading-button"
+import { useRouter } from "next/navigation"
 
 let initialState = {
   message: '',
@@ -23,6 +24,7 @@ let initialState = {
 
 export function FormSignUp(Props: any) {
   const [state, formAction] = useFormState(auth_signup, initialState);
+  const rout = useRouter();
   return (
     <>
       {Props.registerStatus == "yes" ? (
@@ -42,9 +44,9 @@ export function FormSignUp(Props: any) {
       ) : (
         <Card className="w-[350px]">
           <CardHeader>
-            <CardTitle>Sign In</CardTitle>
-            <CardDescription>Login to access more features.</CardDescription>
-            <CardDescription className="text-xs text-orange-300">{state?.message}</CardDescription>
+            <CardTitle>Sign Up</CardTitle>
+            <CardDescription>Register to access more features.</CardDescription>
+            <CardDescription className="text-xs text-orange-400 dark:text-orange-400">{state?.message}</CardDescription>
           </CardHeader>
           <form action={formAction}>
             <CardContent>
@@ -74,9 +76,21 @@ export function FormSignUp(Props: any) {
             <CardFooter className="flex justify-between">
               <Link className={buttonVariants({ variant: "outline" })} href={'/'}>Cancel</Link>
               <Button onClick={() => {
+                const a = setInterval(() => {
+                  toast({
+                    title: "Register",
+                    description: state?.message,
+                  })
+                  rout.replace('/auth/signin')
+                  rout.refresh()
+                  clearInterval(a)
+                }, 1000)
+
                 toast({
-                  title: "Sign Up User",
-                  description: <ButtonLoading text="Registering.." />,
+                  title: "Registering...",
+                  description: (
+                    <ButtonLoading text={"on process.."} />
+                  )
                 })
               }} >Sign Up</Button>
             </CardFooter>

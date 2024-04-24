@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { Card, CardHeader } from "./card";
-import { Button } from "./button";
 import { MyAvatar } from "./myavatar";
 
 export default function CardSearch(Props: any) {

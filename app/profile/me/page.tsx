@@ -1,19 +1,19 @@
 import MyProfile from "@/components/utils/profile/me/myprofile";
 import { SkeletonCard } from "@/components/utils/skeletoncard";
-import { cookies } from "next/headers";
+import { getCookie } from "cookies-next";
+
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
 export default function Page() {
-  const cookie = cookies();
 
-  if (!cookie.get("userToken")?.value) {
+  if (!getCookie("userToken")) {
     redirect("/")
   }
   return (
     <div className="w-full">
       <Suspense fallback={<SkeletonCard />} >
-        <MyProfile user={cookie.get("userToken")?.value} />
+        <MyProfile user={getCookie("userToken")} />
       </Suspense>
     </div>
   )

@@ -2,10 +2,9 @@
 import Link from "next/link";
 import { use } from "react";
 import Image from "next/image";
-import { cookies } from "next/headers";
-import { get_onemenfess, get_replymenfess } from "@/lib/GET/get_menfess";
+import { getCookie } from "cookies-next";
+import { get_onemenfess } from "@/lib/GET/get_menfess";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import ReMenfess from "./card_remenfess";
 import { AlertDeleteMenfess } from "./alert_deletemenfess";
@@ -14,8 +13,7 @@ import { StaredButtonMenfess } from "@/components/ui/stared-button-menfess";
 export default function CardAnyMenfess({ id }: any) {
 
   let menfess = use(get_onemenfess(id));
-  let cookie = cookies();
-  let userA = cookie.get("userToken")?.value;
+  let userA = getCookie("userToken");
 
   return (
     <div className="sm:max-w-[450px] w-full px-2">

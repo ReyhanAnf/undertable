@@ -1,14 +1,22 @@
 import { SkeletonCard } from '@/components/utils/skeletoncard';
 import CardUpdatePosts from '@/components/utils/posts/cardupdate_post';
 import { Suspense } from "react"
-import { get_onepost } from '@/lib/GET/get_posts';
-import { cookies } from 'next/headers';
+import get_posts, { get_onepost } from '@/lib/GET/get_posts';
+import { getCookie } from "cookies-next";
 
-export default async function Page({ params }: { params: { post: string } }) {
-  const opost = await get_onepost(params.post.toString());
-  const cookie = cookies();
-  const auth = cookie.get("statusAuth")?.value;
-  const message = cookie.get("messageAuth")?.value;
+export async function generateStaticParams() {
+  const posts = await get_posts();
+
+  return posts.map((post: { post_id: string; }) => ({
+    post: post.post_id,
+  }))
+}
+
+export default async function Page({ params }: any) {
+  const { post } = params;
+  const opost = await get_onepost(post);
+  const auth = getCookie("statusAuth");
+  const message = getCookie("messageAuth");
   return (
     <div>
       <div className="flex relative min-h-screen flex-col items-center justify-between py-12 px-2">

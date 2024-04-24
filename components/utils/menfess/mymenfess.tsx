@@ -1,14 +1,13 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { cookies } from "next/headers";
+import { getCookie } from "cookies-next";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { StaredButtonMenfess } from "@/components/ui/stared-button-menfess";
 
 export default function MyMenfess({ user, mymenfess }: any) {
 
-  let cookie = cookies();
-  let userA = cookie.get("userToken")?.value;
+  let userA = getCookie("userToken");
 
   return (
     <div className="sm:max-w-[450px] w-full px-2">

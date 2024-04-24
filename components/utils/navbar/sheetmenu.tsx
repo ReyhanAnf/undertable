@@ -9,12 +9,11 @@ import {
 } from "@/components/ui/sheet"
 import Link from "next/link";
 import { MyAvatar } from "../../ui/myavatar";
-import { cookies } from "next/headers";
+import { getCookie } from "cookies-next";
 import Image from "next/image";
 
 export function SheetMenu() {
-  const cookie = cookies();
-  const userA = cookie.get("userToken")?.value;
+  const userA = getCookie("userToken");
   return (
     <Sheet>
       <SheetTrigger asChild>

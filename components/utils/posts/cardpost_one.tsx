@@ -3,12 +3,12 @@ import { use, Suspense } from "react";
 import { get_onepost } from "@/lib/GET/get_posts";
 import { SkeletonCard } from "../skeletoncard";
 import { CardPost } from "@/components/ui/cardonepost";
-import { cookies } from "next/headers";
+import { getCookie } from "cookies-next";
+
 
 export default function AnyMainPost({ idpost }: any) {
   const post = use(get_onepost(idpost));
-  const cookie = cookies();
-  const userA = cookie.get('userToken')?.value;
+  const userA = getCookie('userToken');
   return (
     <Suspense fallback={<SkeletonCard />}>
       <CardPost wAnswer={true} post={post} auth={userA} />

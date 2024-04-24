@@ -15,6 +15,9 @@ import Link from "next/link"
 import { useFormState } from 'react-dom';
 import auth_signin from "@/lib/POST/Auth/auth_signin"
 import { AlertSignOut } from "./alert-signout"
+import { toast } from "@/components/ui/use-toast"
+import { useRouter } from "next/navigation"
+import { ButtonLoading } from "@/components/ui/loading-button"
 
 let initialState = {
   message: '',
@@ -22,12 +25,11 @@ let initialState = {
 
 export function FormSignIn(Props: any) {
   const [state, formAction] = useFormState(auth_signin, initialState);
-
-
-
+  const rout = useRouter();
+  console.log(Props)
   return (
     <>
-      {Props.statauth ? (
+      {Props.statauth == "yes" ? (
         <Card className="w-[350px]">
           <CardHeader>
             <CardTitle>Sign In Success</CardTitle>
@@ -63,7 +65,24 @@ export function FormSignIn(Props: any) {
             </CardContent>
             <CardFooter className="flex justify-between">
               <Link className={buttonVariants({ variant: "outline" })} href={'/'}>Cancel</Link>
-              <Button data- >Sign In</Button>
+              <Button onClick={() => {
+                const a = setInterval(() => {
+                  toast({
+                    title: "Register",
+                    description: state?.message,
+                  })
+                  rout.replace('/auth/signin')
+                  rout.refresh()
+                  clearInterval(a)
+                }, 1000)
+
+                toast({
+                  title: "Registering...",
+                  description: (
+                    <ButtonLoading text={"on process.."} />
+                  )
+                })
+              }} >Sign In</Button>
             </CardFooter>
           </form>
 

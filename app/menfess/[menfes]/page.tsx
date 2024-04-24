@@ -1,12 +1,22 @@
 // import AnyMainPost from "@/components/utils/posts/cardpost_one";
 
 import CardAnyMenfess from "@/components/utils/menfess/card_onemenfess";
+import get_menfess from "@/lib/GET/get_menfess";
 
-export default function Page({ params }: { params: { menfes: string } }) {
+export async function generateStaticParams() {
+  const menfess = await get_menfess();
+
+  return menfess.map((menfes: { menfess_id: string; }) => ({
+    menfes: menfes.menfess_id,
+  }))
+}
+
+export default function Page({ params }: any) {
+  const { menfes } = params
   return (
     <main className="min-h-screen py-14" suppressHydrationWarning>
       <div className="sm:flex sm:flex-1 justify-center items-center">
-        <CardAnyMenfess id={params.menfes} />
+        <CardAnyMenfess id={menfes} />
       </div>
     </main>
   );

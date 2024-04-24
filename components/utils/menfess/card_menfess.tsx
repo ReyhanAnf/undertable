@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { use } from "react";
 import Image from "next/image";
-import { cookies } from "next/headers";
+import { getCookie } from "cookies-next";
 import get_menfess from "@/lib/GET/get_menfess";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { StaredButtonMenfess } from "@/components/ui/stared-button-menfess";
@@ -10,8 +10,7 @@ import { StaredButtonMenfess } from "@/components/ui/stared-button-menfess";
 export default function CardMenfess() {
 
   let dataMenfess = use(get_menfess());
-  let cookie = cookies();
-  let userA = cookie.get("userToken")?.value;
+  let userA = getCookie("userToken");
   let receiversaid = (data: any) => {
     return data.menfess.find((menfes: { user: { username: any; }; }) => { return menfes.user.username == data.receiver.username })
   };
