@@ -48,3 +48,30 @@ export default async function auth_signin(prevState: any, formData: FormData) {
   }
 }
 
+
+export async function authenticate(username: any, password: any) {
+  const req = {
+    'username': username,
+    'password': password,
+  };
+
+
+  const res = await axios.post(`${BASE_URL}/token/`, req)
+  .then((response)=>{
+    const data = response.data;
+    const datatoken = JSON.parse(JSON.stringify(jwtDecode(data.access)));
+
+    return {"token": data, "data" : datatoken}
+    
+  })
+  .catch((error)=>{
+    return error
+  });
+  
+
+ 
+
+
+
+  return res
+}

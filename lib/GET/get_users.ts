@@ -1,4 +1,3 @@
-import axios from "axios";
 import { BASE_URL } from "../url";
 import { cookies } from "next/headers";
 

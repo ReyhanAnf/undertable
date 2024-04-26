@@ -43,7 +43,7 @@ export default function Profile({ username }: any) {
           </div>
           <Image
             src="/profile_default.gif"
-            className="w-20 h-20 rounded-md" alt={"pd"} width={10} />
+            className="w-20 h-20 rounded-md" alt={"pd"} width={10} height={10} />
           <div className="flex flex-col justify-start items-center text-center">
             <div className="font-bold">{mydata.nis.fullname}</div>
             <div className="text-xs font-thin">{mydata.nis.shortname}</div>
@@ -65,7 +65,7 @@ export default function Profile({ username }: any) {
                   <Image
                     src="/instagram.svg"
                     className="rounded-md"
-                    width={32} alt={"ig"} />
+                    width={32} height={32} alt={"ig"} />
                 </Button>
               </HoverCardTrigger>
               <HoverCardContent className="z-40">
@@ -80,7 +80,7 @@ export default function Profile({ username }: any) {
                   <Image
                     src="/birth.svg"
                     className=" rounded-md"
-                    width={32} alt={"hbd"} />
+                    width={32} height={32} alt={"hbd"} />
                 </Button>
               </HoverCardTrigger>
               <HoverCardContent className="z-40">
@@ -95,7 +95,7 @@ export default function Profile({ username }: any) {
                   <Image
                     src="/spotify.svg"
                     className=" rounded-md"
-                    width={32} alt={"spt"} />
+                    width={32} height={32} alt={"spt"} />
                 </Button>
               </HoverCardTrigger>
               <HoverCardContent className="z-40">

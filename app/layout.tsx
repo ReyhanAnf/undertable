@@ -5,9 +5,11 @@ import { Poppins } from "next/font/google"
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import MainNavbar from "@/components/utils/navbar/main-navbar";
-import { Providers } from "./Providers";
+import Provider from "./context/client-provider";
 import { Toaster } from "@/components/ui/toaster";
 import Refresh from "./refresh";
+import { getServerSession } from "next-auth";
+import { authOptions } from "./api/auth/[...nextauth]/route";
 
 const poppins = Poppins({
   weight: "400",
@@ -23,14 +25,15 @@ export const metadata: Metadata = {
 
 export const dynamic = 'force-static'
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
 
 
-
+  const session = await getServerSession(authOptions)
+  console.log(session)
 
 
   return (
@@ -39,13 +42,13 @@ export default function RootLayout({
         "min-h-screen bg-slate-200/90 dark:bg-black font-sans antialiased w-full",
         poppins.variable
       )}>
-        <Providers>
+        <Provider session={session}>
           <header>
             <MainNavbar />
             <Refresh />
           </header>
           {children}
-        </Providers>
+        </Provider>
         <Toaster />
 
       </body>

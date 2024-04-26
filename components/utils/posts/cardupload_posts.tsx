@@ -81,52 +81,36 @@ export default function CardUploadPosts(Props: any) {
 
   return (
     <>
-      {Props.auth != 'yes' ? (
-        <Card className="w-[650px] flex flex-1 justify-center items-center">
-          <CardHeader>
-            <CardTitle>You Should Sign In</CardTitle>
-            <CardDescription>Go to page Sign In!</CardDescription>
-          </CardHeader>
+      <Card className="w-[350px]">
+        <CardHeader>
+          <CardTitle>Posting</CardTitle>
+          <CardDescription>Share your homework.</CardDescription>
+          <CardDescription className="text-xs text-orange-300">{state?.message}</CardDescription>
+        </CardHeader>
+        <form action={formAction}>
           <CardContent>
-            {state?.message}
+            <div className="grid w-full items-center gap-4">
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="content">content</Label>
+                <Textarea id="content" placeholder="your thinks..." name="content" />
+              </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="tags">tags</Label>
+                <Input type="text" id="tags" name="tags" placeholder="Your tags" />
+              </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="image">image</Label>
+                <Input id="image" type="file" name="image" onChange={handleChange} />
+              </div>
+
+            </div>
           </CardContent>
           <CardFooter className="flex justify-between">
-            <Link className={buttonVariants({ variant: "outline" })} href={'/'}>Sign In</Link>
+            <Link className={buttonVariants({ variant: "outline" })} href={'/'}>Cancel</Link>
+            <Button onClick={send} >Posting</Button>
           </CardFooter>
-        </Card>
-      ) : (
-        <Card className="w-[350px]">
-          <CardHeader>
-            <CardTitle>Posting</CardTitle>
-            <CardDescription>Share your homework.</CardDescription>
-            <CardDescription className="text-xs text-orange-300">{state?.message}</CardDescription>
-          </CardHeader>
-          <form action={formAction}>
-            <CardContent>
-              <div className="grid w-full items-center gap-4">
-                <div className="flex flex-col space-y-1.5">
-                  <Label htmlFor="content">content</Label>
-                  <Textarea id="content" placeholder="your thinks..." name="content" />
-                </div>
-                <div className="flex flex-col space-y-1.5">
-                  <Label htmlFor="tags">tags</Label>
-                  <Input type="text" id="tags" name="tags" placeholder="Your tags" />
-                </div>
-                <div className="flex flex-col space-y-1.5">
-                  <Label htmlFor="image">image</Label>
-                  <Input id="image" type="file" name="image" onChange={handleChange} />
-                </div>
-
-              </div>
-            </CardContent>
-            <CardFooter className="flex justify-between">
-              <Link className={buttonVariants({ variant: "outline" })} href={'/'}>Cancel</Link>
-              <Button onClick={send} >Posting</Button>
-            </CardFooter>
-          </form>
-        </Card>
-      )}
-
+        </form>
+      </Card>
     </>
   )
 }
