@@ -2,18 +2,19 @@
 import Link from "next/link";
 import { use } from "react";
 import Image from "next/image";
-import { getCookie } from "cookies-next";
 import { get_onemenfess } from "@/lib/GET/get_menfess";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import ReMenfess from "./card_remenfess";
 import { AlertDeleteMenfess } from "./alert_deletemenfess";
 import { StaredButtonMenfess } from "@/components/ui/stared-button-menfess";
+import { getSessionData } from "@/app/getSession";
 
 export default function CardAnyMenfess({ id }: any) {
 
   let menfess = use(get_onemenfess(id));
-  let userA = getCookie("userToken");
+  const sess = getSessionData();
+  const userA = sess["user"];
 
   return (
     <div className="sm:max-w-[450px] w-full px-2">

@@ -1,21 +1,20 @@
 'use server';
 import axios from "axios";
 import { BASE_URL } from "../../url";
-import { cookies } from "next/headers";
+import { getSessionData } from "@/app/getSession";
 
 export default async function upload_answers(formData: any) {
-  const cookie = cookies();
-  const user = cookie.get("userToken")?.value;
-  const access = cookie.get("accessToken");
+  const sess = getSessionData();
+  const user = sess["user"];
+  const access = sess["access"];
   const req = {
     'post': formData[1],
     'content': formData[0].content,
     'user': user
   };
-
   const headers = {
     'headers': {
-      'Authorization': 'Bearer ' + access?.value,
+      'Authorization': 'Bearer ' + access,
     }
   }
 
@@ -23,15 +22,15 @@ export default async function upload_answers(formData: any) {
   
   const res = await axios.post(`${BASE_URL}/answers/`, req, headers)
   .then((response)=>{
-    cookie.set('uploadStatus', response.status.toString());
-    cookie.set('messageAuth', response.data.toString());
+    // cookie.set('uploadStatus', response.status.toString());
+    return response
   })
   .catch((error)=>{
-    cookie.set('uploadStatus',`4xx gagal`);
+    return error
   });
   
 
   return {
-    message : cookie.get('messageAuth')?.value
+    message : ""
   }
 }

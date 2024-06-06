@@ -1,15 +1,15 @@
 'use server';
 import axios from "axios";
 import { BASE_URL } from "../url";
-import { cookies } from "next/headers";
+import { getSessionData } from "@/app/getSession";
 
 export default async function deleteMenfess(menfessId: string) {
-  const cookie = cookies();
-  const access = cookie.get("accessToken");
+  const sess = getSessionData();
+  const access = sess["access"];
 
   const auth = {
     'headers': { 
-      'Authorization': 'Bearer ' + access?.value ,
+      'Authorization': 'Bearer ' + access ,
   },
   }
    
@@ -26,12 +26,12 @@ export default async function deleteMenfess(menfessId: string) {
 }
 
 export async function deleteReplyMenfess(replyId: string) {
-  const cookie = cookies();
-  const access = cookie.get("accessToken");
+  const sess = getSessionData();
+  const access = sess["access"];
 
   const auth = {
     'headers': { 
-      'Authorization': 'Bearer ' + access?.value ,
+      'Authorization': 'Bearer ' + access ,
   },
   }
    

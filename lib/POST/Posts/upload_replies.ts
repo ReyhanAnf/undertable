@@ -2,11 +2,13 @@
 import axios from "axios";
 import { BASE_URL } from "../../url";
 import { cookies } from "next/headers";
+import { getSessionData } from "@/app/getSession";
 
 export default async function upload_replies(formData: any) {
   const cookie = cookies();
-  const user = cookie.get("userToken")?.value;
-  const access = cookie.get("accessToken");
+  const sess = getSessionData();
+  const user = sess["user"];
+  const access = sess["access"];
   const req = {
     'answer': formData[1],
     'content': formData[0].content,
@@ -15,7 +17,7 @@ export default async function upload_replies(formData: any) {
 
   const headers = {
     'headers': {
-      'Authorization': 'Bearer ' + access?.value,
+      'Authorization': 'Bearer ' + access,
     }
   }
 

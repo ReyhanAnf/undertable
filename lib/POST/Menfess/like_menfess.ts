@@ -1,11 +1,11 @@
 'use server';
 import axios from "axios";
 import { BASE_URL } from "@/lib/url";
-import { cookies } from "next/headers";
+import { getSessionData } from "@/app/getSession";
 
 export default async function like_menfess(menfessid: any, liked: any) {
-  const cookie = cookies();
-  const access = cookie.get("accessToken");
+  const sess = getSessionData();
+  const access = sess["access"];
   const req = {
     'menfess_id': menfessid,
     'likes': liked
@@ -13,7 +13,7 @@ export default async function like_menfess(menfessid: any, liked: any) {
 
   const auth = {
     'headers': { 
-      'Authorization': 'Bearer ' + access?.value ,
+      'Authorization': 'Bearer ' + access ,
   },
   }
    

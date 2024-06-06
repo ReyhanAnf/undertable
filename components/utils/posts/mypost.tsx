@@ -6,11 +6,9 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 import { StaredButton } from "@/components/ui/stared-button";
-import { cookies } from "next/headers";
 
 
 export default function MyPosts({ user, mypost }: any) {
-  const userA = cookies().get("userToken")?.value
 
   return (
     <div className=" w-full px-2 sm:flex sm:flex-row sm:flex-wrap items-start ">
@@ -82,7 +80,7 @@ export default function MyPosts({ user, mypost }: any) {
                         height={25}
                       />
                     </Link>
-                    <StaredButton idpost={post.post_id} userA={userA} realLike={post.likes} />
+                    <StaredButton idpost={post.post_id} userA={user} realLike={post.likes} />
                     <Link className="answer-view rounded-md px-1 mx-1 flex items-center"
                       href={'/posts/' + post.post_id + "/answer"}
                     >
@@ -100,7 +98,7 @@ export default function MyPosts({ user, mypost }: any) {
               )
                 : (
                   <div className="flex flex-row justify-end rounded-none bg-transparent">
-                    <StaredButton idpost={post.post_id} userA={userA} realLike={post.likes} />
+                    <StaredButton idpost={post.post_id} userA={user} realLike={post.likes} />
                     <Link className="answer-view rounded-md px-1 mx-1 flex items-center"
                       href={'/posts/' + post.post_id + "/answer"}
                     >

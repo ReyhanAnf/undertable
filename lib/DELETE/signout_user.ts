@@ -12,14 +12,10 @@ export default async function signout_user() {
   //Jika Valid maka jalankan refresh token supaya bisa dapatkan akses token lagi
   //Jika tidak maka kembalika ke halaman login
   // Jika tidak ada maka login
-  if (cookie.has('accessToken')) {
+  if (cookie.has('session')) {
     
-    cookie.delete('accessToken');
-    cookie.delete('refreshToken');
-    cookie.delete('userToken');
-    cookie.delete('expiredToken');
-    cookie.delete('startToken');
-    cookie.delete('registerStatus');
+    cookie.delete('session');
+    cookie.delete('re-session');
     cookie.set('messageAuth','signout user');
     cookie.set('statusAuth','no');
 

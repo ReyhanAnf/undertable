@@ -2,19 +2,22 @@
 import axios from "axios";
 import { BASE_URL } from "../../url";
 import { cookies } from "next/headers";
+import { getSessionData } from "@/app/getSession";
+import { handleLogout } from "@/app/actions";
 
 
 export default async function upload_posts(formData: FormData) {
   const cookie = cookies();
-  const user = cookie.get("userToken")?.value;
-  const access = cookie.get("accessToken");
+  const sess = getSessionData();
+  const user = sess["user"];
+  const access = sess["access"];
   if (user) {
     formData.append('author', user)
   }
 
   const headers = {
     'headers': {
-      'Authorization': `Bearer ${access?.value}`,
+      'Authorization': `Bearer ${access}`,
     }
   }
 
@@ -25,7 +28,7 @@ export default async function upload_posts(formData: FormData) {
   })
   .catch((error)=>{
     cookie.set('messageAuth','Posting Gagal!');
-
+    handleLogout()
     console.log("error ::: ", error);
 
   });

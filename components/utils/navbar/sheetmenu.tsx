@@ -11,9 +11,11 @@ import Link from "next/link";
 import { MyAvatar } from "../../ui/myavatar";
 import Image from "next/image";
 import { cookies } from "next/headers";
+import { getSessionData } from "@/app/getSession";
 
 export function SheetMenu() {
-  const userA = cookies().get("userToken")?.value;
+  const sess = getSessionData();
+  const userA = sess["user"];
   return (
     <Sheet>
       <SheetTrigger asChild>

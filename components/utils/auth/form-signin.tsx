@@ -26,7 +26,6 @@ let initialState = {
 export function FormSignIn(Props: any) {
   const [state, formAction] = useFormState(auth_signin, initialState);
   const rout = useRouter();
-  console.log(Props)
   return (
     <>
       {Props.statauth == "yes" ? (

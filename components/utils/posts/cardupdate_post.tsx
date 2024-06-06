@@ -54,7 +54,7 @@ export default function CardUpdatePosts(Props: any) {
 
   return (
     <>
-      {Props.auth != 'yes' ? (
+      {Props.auth == undefined ? (
         <Card className="w-[650px] ">
           <CardHeader>
             <CardTitle>You Should Sign In</CardTitle>

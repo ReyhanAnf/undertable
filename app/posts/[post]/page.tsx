@@ -12,7 +12,6 @@ export async function generateStaticParams() {
 
 export default function Page({ params }: any) {
   const { post } = params;
-  console.log(post)
   return (
     <main className="min-h-screen py-14" suppressHydrationWarning>
       <div className="sm:flex sm:flex-1 justify-center items-center">

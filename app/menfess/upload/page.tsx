@@ -1,11 +1,11 @@
 import CardUploadMenfess from "@/components/utils/menfess/cardupload_menfess";
 import get_users from "@/lib/GET/get_users";
-import { getCookie } from "cookies-next";
 import { use } from "react";
+import { cookies } from "next/headers";
 
 export default function Page() {
-  const auth = getCookie("statusAuth");
-  const message = getCookie("messageAuth");
+  const auth = cookies().get("statusAuth")?.value;
+  const message = cookies().get("messageAuth")?.value;
   const users = use(get_users());
 
 

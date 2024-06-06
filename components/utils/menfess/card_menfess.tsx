@@ -2,15 +2,16 @@
 import Link from "next/link";
 import { use } from "react";
 import Image from "next/image";
-import { getCookie } from "cookies-next";
 import get_menfess from "@/lib/GET/get_menfess";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { StaredButtonMenfess } from "@/components/ui/stared-button-menfess";
+import { getSessionData } from "@/app/getSession";
 
 export default function CardMenfess() {
 
   let dataMenfess = use(get_menfess());
-  let userA = getCookie("userToken");
+  const sess = getSessionData();
+  let userA = sess["user"];
   let receiversaid = (data: any) => {
     return data.menfess.find((menfes: { user: { username: any; }; }) => { return menfes.user.username == data.receiver.username })
   };

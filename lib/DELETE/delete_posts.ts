@@ -1,15 +1,15 @@
 'use server';
 import axios from "axios";
 import { BASE_URL } from "../url";
-import { cookies } from "next/headers";
+import { getSessionData } from "@/app/getSession";
 
 export default async function deletePost(postId: string) {
-  const cookie = cookies();
-  const access = cookie.get("accessToken");
+  const sess = getSessionData();
+  const access = sess["access"];
 
   const auth = {
     'headers': { 
-      'Authorization': 'Bearer ' + access?.value ,
+      'Authorization': 'Bearer ' + access ,
   },
   }
    
@@ -27,12 +27,12 @@ export default async function deletePost(postId: string) {
 
 
 export async function deleteAnswerPost(answerId: string) {
-  const cookie = cookies();
-  const access = cookie.get("accessToken");
+  const sess = getSessionData();
+  const access = sess["access"];
 
   const auth = {
     'headers': { 
-      'Authorization': 'Bearer ' + access?.value ,
+      'Authorization': 'Bearer ' + access ,
   },
   }
    
@@ -48,12 +48,12 @@ export async function deleteAnswerPost(answerId: string) {
   return res;
 }
 export async function deleteReplyAnswer(replyId: string) {
-  const cookie = cookies();
-  const access = cookie.get("accessToken");
+  const sess = getSessionData();
+  const access = sess["access"];
 
   const auth = {
     'headers': { 
-      'Authorization': 'Bearer ' + access?.value ,
+      'Authorization': 'Bearer ' + access ,
   },
   }
    

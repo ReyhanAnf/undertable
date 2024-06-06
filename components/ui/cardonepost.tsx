@@ -151,7 +151,7 @@ export function CardPost({ wAnswer, post, auth }: any) {
         <Separator />
         <CardFooter className="flex justify-between">
           <div className="answer-meta text-sm my-1 flex justify-between">
-            <div className="p-1 border rounded-xl border-slate-500 bg-cyan-800 bg-opacity-25 m-1">post.tags</div>
+            <div className="p-1 border rounded-xl border-slate-500 bg-cyan-800 bg-opacity-25 m-1">{post.tags}</div>
           </div>
           <div className="flex gap-1">
             <p className="text-xs">{post.answers.length}</p>

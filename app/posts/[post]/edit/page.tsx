@@ -2,7 +2,7 @@ import { SkeletonCard } from '@/components/utils/skeletoncard';
 import CardUpdatePosts from '@/components/utils/posts/cardupdate_post';
 import { Suspense } from "react"
 import get_posts, { get_onepost } from '@/lib/GET/get_posts';
-import { getCookie } from "cookies-next";
+import { getSessionData } from '@/app/getSession';
 
 export async function generateStaticParams() {
   const posts = await get_posts();
@@ -15,8 +15,9 @@ export async function generateStaticParams() {
 export default async function Page({ params }: any) {
   const { post } = params;
   const opost = await get_onepost(post);
-  const auth = getCookie("statusAuth");
-  const message = getCookie("messageAuth");
+  const sess = getSessionData()
+  const auth = sess["access"];
+  const message = sess["user"];
   return (
     <div>
       <div className="flex relative min-h-screen flex-col items-center justify-between py-12 px-2">

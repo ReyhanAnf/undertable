@@ -15,14 +15,15 @@ import Link from "next/link";
 import get_posts from "@/lib/GET/get_posts";
 import { SkeletonCard } from "../skeletoncard";
 import { StaredButton } from "@/components/ui/stared-button";
-import { cookies } from "next/headers";
 
 import Image from "next/image";
+import { getSessionData } from "@/app/getSession";
 
 
 export function CardPost() {
   const postsdata = use(get_posts());
-  const userA = cookies().get('userToken')?.value;
+  const sess = getSessionData()
+  const userA = sess["user"];
 
   return (
     <div className="sm:max-w-[450px] w-full px-2">
