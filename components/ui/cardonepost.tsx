@@ -99,6 +99,7 @@ export function CardPost({ wAnswer, post, auth }: any) {
                     alt="Woman listing to music"
                     className="object-cover rounded-lg"
                     height={200}
+                    width={200}
                     src={post.image}
                   />
                 </Link>

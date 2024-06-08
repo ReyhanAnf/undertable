@@ -66,6 +66,7 @@ export default function MyPosts({ user, mypost }: any) {
                     alt="Woman listing to music"
                     className="object-contain rounded-lg shadow-inner"
                     height={200}
+                    width={400}
                     src={post.image}
                   />
                   <CardFooter className="absolute bottom-2 backdrop-blur-md justify-end z-40 bg-slate-500/30 bg-opacity-20 border-white/30 border-1 overflow-hidden py-1 mx-1  rounded-xl  w-[calc(100%_-_8px)] shadow-sm">

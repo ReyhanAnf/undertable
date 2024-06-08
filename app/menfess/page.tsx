@@ -8,6 +8,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen py-14">
+      <h1 className="text-center text-lg font-semibold">Menfess</h1>
       <div className="sm:flex sm:flex-1 justify-center items-center">
         <Suspense fallback={<SkeletonCard />} >
           <CardMenfess />

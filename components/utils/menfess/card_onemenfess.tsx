@@ -19,7 +19,7 @@ export default function CardAnyMenfess({ id }: any) {
   return (
     <div className="sm:max-w-[450px] w-full px-2">
       <Card className="sm:max-w-[500px] w-full my-3 mx-auto z-10 bg-opacity-50 shadow-sm shadow-cyan-600" id={`menfess-${menfess.menfess_id}`} key={`menfess-${menfess.menfess_id}`}>
-        {menfess.receiver.username == userA ?
+        {menfess.receiver && menfess.receiver.username == userA ?
           (
             <CardHeader className="flex flex-row items-center justify-between -mt-4 -mb-4">
               <Link className="answer-view rounded-md px-1 flex items-center"

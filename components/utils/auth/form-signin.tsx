@@ -28,7 +28,7 @@ export function FormSignIn(Props: any) {
   const rout = useRouter();
   return (
     <>
-      {Props.statauth == "yes" ? (
+      {Props.user != undefined ? (
         <Card className="w-[350px]">
           <CardHeader>
             <CardTitle>Sign In Success</CardTitle>

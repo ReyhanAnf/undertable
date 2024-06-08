@@ -94,7 +94,7 @@ export default function CardUploadMenfess(Props: any) {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
-                    <SelectLabel>Kelas</SelectLabel>
+                    <SelectLabel>Nama</SelectLabel>
                     {Props.users.map((c: { username: any; fullname: any }) => (
                       <SelectItem key={c.username} value={c.username}>{c.fullname}</SelectItem>
                     ))}
@@ -149,7 +149,6 @@ export default function CardUploadMenfess(Props: any) {
                   placeholder="1 emote.."
                   className="text-gray-500"
                   maxLength={2}
-                  defaultValue="✌️"
                 />
               </div>
               <Label htmlFor="kelas">Receiver</Label>
