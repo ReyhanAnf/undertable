@@ -37,6 +37,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## Preview
 - ### Post Page
-  ![https://raw.githubusercontent.com/ReyhanAnf/undertable/master/localhost_3000_(Nest%20Hub%20Max).png]
+  ![Post Page](https://raw.githubusercontent.com/ReyhanAnf/undertable/master/localhost_3000_(Nest%20Hub%20Max).png)
 - ### Menfess Page
+  ![Menfess Page](https://raw.githubusercontent.com/ReyhanAnf/undertable/master/localhost_3000_(Nest%20Hub%20Max)%20(1).png)
 - ### Profile Page
+  ![Profile Page](https://raw.githubusercontent.com/ReyhanAnf/undertable/master/localhost_3000_profile_me(Nest%20Hub%20Max).png)
