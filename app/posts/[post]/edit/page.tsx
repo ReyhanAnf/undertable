@@ -4,16 +4,9 @@ import { Suspense } from "react"
 import get_posts, { get_onepost } from '@/lib/GET/get_posts';
 import { getSessionData } from '@/app/getSession';
 
-export async function generateStaticParams() {
-  const posts = await get_posts();
 
-  return posts.map((post: { post_id: string; }) => ({
-    post: post.post_id,
-  }))
-}
-
-export default async function Page({ params }: any) {
-  const { post } = params;
+export default async function Page({ params }: { params: { post: string } }) {
+  const post = params.post;
   const opost = await get_onepost(post);
   const sess = getSessionData()
   const auth = sess["access"];

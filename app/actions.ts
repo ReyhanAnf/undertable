@@ -1,8 +1,8 @@
 'use server'
  
 import { cookies } from 'next/headers';
-import { useRouter } from 'next/navigation';
 import { jwtDecode } from 'jwt-decode';
+import { redirect } from 'next/navigation';
 
 
 export async function handleLogin(sessionToken: any, refreshToken : any) {
@@ -24,12 +24,11 @@ export async function handleLogin(sessionToken: any, refreshToken : any) {
     path: '/',
   })
   // Redirect or handle the response after setting the cookie
-  const rout = useRouter();
-  rout.replace("/");
+  redirect("/")
 }
 
 export async function handleLogout() {
   cookies().delete("session")
   // Redirect or handle the response after setting the cookie
-  useRouter().replace("/");
+  redirect("/")
 }

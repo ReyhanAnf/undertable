@@ -15,7 +15,7 @@ export const TextGenerateEffect = ({
   let wordsArray = words.split(" ");
   useEffect(() => {
     animate(
-      "span",
+      scope.current,
       {
         opacity: 1,
       },
